@@ -1,3 +1,5 @@
+import random
+import secrets
 from django.db.models import Func,F
 from rest_framework.views import APIView
 from rest_framework.views import APIView
@@ -63,3 +65,8 @@ class getInfo(APIView):
         user = request.user
         return Response({'user_type':user.user_type})
 
+def id_generator(size=9, chars=string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+def id_generator2(size=9, chars=string.digits):
+    return ''.join(secrets.choice(chars) for _ in range(size))
